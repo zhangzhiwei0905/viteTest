@@ -1,0 +1,108 @@
+/* App 组件特定样式 */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* 移动端导航菜单样式调整 */
+.navbar-collapse {
+  transition: all 0.3s ease;
+}
+
+.navbar-collapse.show {
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: var(--shadow);
+  margin-top: 0.5rem;
+}
+
+/* 修复导航栏移动端菜单动画 */
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 102, 204, 0.25);
+}
+
+/* 确保移动端菜单正确显示 */
+@media (max-width: 991px) {
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  .navbar-nav .nav-link::after {
+    bottom: -2px;
+  }
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 加载动画 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 页面过渡动画 */
+.page-transition {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* 确保响应式设计在所有屏幕尺寸下正常工作 */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* 印刷友好样式 */
+@media print {
+  .navbar, .footer {
+    display: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .btn {
+    border: 1px solid black;
+    background: none;
+    color: black;
+  }
+}
