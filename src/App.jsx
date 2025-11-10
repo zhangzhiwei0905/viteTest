@@ -31,7 +31,7 @@ function App() {
           <div className="container">
             <Link className="navbar-brand" to="/">
               <i className="fas fa-industry mr-2"></i>
-              <span>钣金加工专家</span>
+              <span>玮莱达</span>
             </Link>
             
             {/* 移动端菜单按钮 */}
