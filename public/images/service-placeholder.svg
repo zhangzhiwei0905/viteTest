@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f0f0f0"/>
+  <path d="M100 100 L300 100 L300 200 L100 200 Z" fill="none" stroke="#9e9e9e" stroke-width="2"/>
+  <path d="M150 150 L250 150" stroke="#616161" stroke-width="2"/>
+  <path d="M200 100 L200 200" stroke="#616161" stroke-width="2"/>
+  <text x="200" y="240" font-family="Arial" font-size="18" text-anchor="middle" fill="#757575">服务图片占位</text>
+</svg>

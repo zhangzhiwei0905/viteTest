@@ -1,35 +1,40 @@
-# 钣金厂网站前端项目
+# 钣金厂网站前端项目 - Next.js 版本
 
-这是一个为钣金厂设计的现代化企业官网前端项目，基于React + Vite构建，提供美观、响应式的用户界面，适合展示公司信息、服务项目、产品和工厂环境。
+这是一个为钣金厂设计的现代化企业官网前端项目，基于Next.js构建，提供美观、响应式的用户界面，适合展示公司信息、服务项目、产品和工厂环境。
 
 ## 技术栈
 
-- React 18
-- Vite
-- React Router DOM
-- Bootstrap 5
-- Font Awesome
+- Next.js 13
+- JavaScript
+- React
+- 自定义CSS
+- npm
 
 ## 项目结构
 
 ```
-├── public/              # 静态资源文件
-├── src/
-│   ├── components/      # React组件
-│   │   ├── Home.jsx     # 首页组件
-│   │   ├── About.jsx    # 关于我们组件
-│   │   ├── Services.jsx # 服务项目组件
-│   │   ├── Products.jsx # 产品展示组件
-│   │   ├── Gallery.jsx  # 工厂展示组件
-│   │   └── Contact.jsx  # 联系我们组件
-│   ├── App.jsx          # 应用主组件
-│   ├── App.css          # 应用样式
-│   ├── main.jsx         # 应用入口
-│   └── index.css        # 全局样式
-├── .gitignore           # Git忽略文件
-├── index.html           # HTML模板
-├── package.json         # 项目依赖配置
-└── vite.config.js       # Vite配置
+├── components/      # React组件
+│   ├── Navbar.js    # 导航栏组件
+│   ├── Footer.js    # 页脚组件
+│   ├── HeroSection.js    # 首页英雄区域
+│   ├── AboutSection.js   # 首页关于我们区域
+│   ├── ServicesSection.js # 首页服务区域
+│   ├── ProductsSection.js # 首页产品区域
+│   ├── ContactSection.js  # 首页联系区域
+│   └── ProductList.js     # 产品列表组件
+├── pages/           # Next.js页面
+│   ├── _app.js      # 应用入口
+│   ├── index.js     # 首页
+│   ├── products.js  # 产品页
+│   ├── about.js     # 关于我们页
+│   └── contact.js   # 联系我们页
+├── public/          # 静态资源
+│   └── images/      # 图片文件夹
+├── styles/          # 样式文件
+│   └── globals.css  # 全局样式
+├── package.json     # 项目配置
+├── .gitignore       # Git忽略文件
+└── README.md        # 项目说明
 ```
 
 ## 功能特性
@@ -56,24 +61,28 @@ npm install
 npm run dev
 ```
 
+然后访问 http://localhost:3000
+
 ### 构建生产版本
 
 ```bash
 npm run build
 ```
 
-### 预览生产版本
+### 导出静态网站
 
 ```bash
-npm run preview
+npm run export
 ```
+
+导出的静态文件将位于 `out` 目录中。
 
 ## 如何部署到Vercel
 
 1. 将项目上传到GitHub仓库
 2. 登录Vercel账户
 3. 点击"New Project"，导入您的GitHub仓库
-4. 配置构建命令为`npm run build`，输出目录为`dist`
+4. 对于Next.js项目，Vercel会自动识别并配置正确的构建命令和输出目录
 5. 点击"Deploy"按钮开始部署
 6. 部署完成后，您将获得一个公开的URL
 
@@ -97,9 +106,13 @@ npm run preview
 
 ## 注意事项
 
+- 请确保将产品图片放置在 `public/images` 目录下
+- 图片命名应与组件中引用的文件名一致
 - 本项目使用了在线图片资源，建议替换为您自己的图片
 - 表单提交功能需要后端支持，当前仅为前端模拟
 - 地图嵌入使用了Google Maps，在中国可能需要替换为其他地图服务
+- 如需部署到生产环境，请配置合适的环境变量
+- 构建前请确保所有依赖已正确安装
 
 ## License
 

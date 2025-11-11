@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f5f5f5"/>
+  <circle cx="400" cy="300" r="100" fill="#e0e0e0"/>
+  <path d="M400 250 L450 350 L400 320 L350 350 Z" fill="#bdbdbd"/>
+  <text x="400" y="400" font-family="Arial" font-size="24" text-anchor="middle" fill="#757575">产品图片占位</text>
+</svg>
