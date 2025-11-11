@@ -1,103 +1,174 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Products = () => {
-  // 产品数据
+  // 状态管理
+  const [selectedCategory, setSelectedCategory] = useState('所有')
+  const [selectedMaterial, setSelectedMaterial] = useState('所有')
+  
+  // 产品数据 - 基于参考网站的钣金冲压产品风格
   const products = [
     {
       id: 1,
-      name: '工业设备外壳',
-      description: '高精度加工的工业设备外壳，具有良好的防护性能和美观的外观设计。采用优质材料制造，可根据客户需求进行定制。',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      category: '设备外壳',
-      features: ['高精度加工', '优质材料', '防护性能好', '美观耐用']
+      name: '精密钣金冲压件',
+      description: '通过冲压设备和模具对金属板材施加压力，使其产生塑性变形或分离，从而获得具有特定形状、尺寸和性能的零件。',
+      image: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+      category: '冲压件',
+      material: '不锈钢',
+      features: ['高精度加工', '高强度', '耐腐蚀', '一致性好']
     },
     {
       id: 2,
-      name: '不锈钢制品',
-      description: '高品质不锈钢钣金制品，具有优异的耐腐蚀性和美观的表面处理效果。适用于各种环境下的使用需求。',
-      image: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      category: '不锈钢产品',
-      features: ['耐腐蚀', '美观耐用', '表面处理多样', '易清洁']
+      name: '自动化设备外壳',
+      description: '为自动化设备提供保护和美观外观的精密钣金外壳，采用优质材料制造，具有良好的防护性能。',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+      category: '设备外壳',
+      material: '冷轧钢',
+      features: ['防护性能好', '美观耐用', '结构稳固', '可定制化']
     },
     {
       id: 3,
-      name: '电子设备箱体',
-      description: '专为电子设备设计的精密箱体，提供良好的电磁屏蔽和散热性能。保护电子元件免受外部环境的影响。',
+      name: '电子控制柜',
+      description: '专为电子设备设计的控制柜，提供良好的电磁屏蔽和散热性能，保护电子元件免受外部环境的影响。',
       image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      category: '电子设备',
+      category: '控制柜',
+      material: '镀锌板',
       features: ['电磁屏蔽', '散热性能好', '防尘防水', '结构稳固']
     },
     {
       id: 4,
-      name: '医疗设备外壳',
-      description: '符合医疗行业标准的设备外壳，具有良好的卫生性能和耐腐蚀性能。适用于各种医疗设备的外壳需求。',
+      name: '医疗设备钣金外壳',
+      description: '符合医疗行业标准的设备外壳，具有良好的卫生性能和耐腐蚀性能，适用于各种医疗设备。',
       image: 'https://images.unsplash.com/photo-1593642632500-2682810df593?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
       category: '医疗设备',
+      material: '不锈钢',
       features: ['符合医疗标准', '易清洁', '耐腐蚀', '安全可靠']
     },
     {
       id: 5,
       name: '通信设备机柜',
-      description: '高性能通信设备机柜，具有良好的防护性能和散热性能。为通信设备提供安全可靠的安装环境。',
+      description: '高性能通信设备机柜，具有良好的防护性能和散热性能，为通信设备提供安全可靠的安装环境。',
       image: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
       category: '通信设备',
+      material: '冷轧钢',
       features: ['防护性能好', '散热性能优异', '安装便捷', '结构稳固']
     },
     {
       id: 6,
-      name: '自动化设备零件',
-      description: '高精度自动化设备零件，确保自动化设备的正常运行和高精度要求。采用先进的加工工艺制造。',
+      name: '工业自动化配件',
+      description: '高精度工业自动化设备配件，确保自动化设备的正常运行和高精度要求，采用先进的加工工艺制造。',
       image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      category: '自动化设备',
+      category: '自动化配件',
+      material: '铝合金',
       features: ['高精度', '高耐磨', '一致性好', '使用寿命长']
     },
     {
       id: 7,
-      name: '太阳能支架',
-      description: '高强度太阳能支架系统，为太阳能电池板提供稳定的安装支撑。采用优质材料制造，具有良好的耐候性。',
+      name: '太阳能支架系统',
+      description: '高强度太阳能支架系统，为太阳能电池板提供稳定的安装支撑，采用优质材料制造，具有良好的耐候性。',
       image: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
       category: '新能源设备',
+      material: '铝合金',
       features: ['高强度', '耐候性好', '安装便捷', '使用寿命长']
     },
     {
       id: 8,
-      name: '展示架和陈列柜',
-      description: '美观实用的展示架和陈列柜，用于产品展示和陈列。可根据客户需求进行定制设计和制造。',
+      name: '商业展示架',
+      description: '美观实用的商业展示架，用于产品展示和陈列，可根据客户需求进行定制设计和制造。',
       image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
       category: '商业展示',
+      material: '不锈钢',
       features: ['美观大方', '结构稳固', '拆装便捷', '可定制化']
     },
     {
       id: 9,
-      name: '厨房设备配件',
-      description: '不锈钢厨房设备配件，具有良好的耐腐蚀性和卫生性能。适用于各种厨房设备的制造和维修。',
+      name: '不锈钢厨房设备配件',
+      description: '优质不锈钢厨房设备配件，具有良好的耐腐蚀性和卫生性能，适用于各种厨房设备的制造和维修。',
       image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
       category: '厨房设备',
+      material: '不锈钢',
       features: ['食品级材质', '易清洁', '耐腐蚀', '使用寿命长']
     }
   ]
+  
+  // 提取唯一的分类和材质
+  const categories = ['所有', ...Array.from(new Set(products.map(product => product.category)))]
+  const materials = ['所有', ...Array.from(new Set(products.map(product => product.material)))]
+  
+  // 过滤产品
+  const filteredProducts = products.filter(product => {
+    const categoryMatch = selectedCategory === '所有' || product.category === selectedCategory
+    const materialMatch = selectedMaterial === '所有' || product.material === selectedMaterial
+    return categoryMatch && materialMatch
+  })
 
   return (
     <div className="page-transition">
-      {/* 页面标题 */}
+      {/* 页面标题 - 专业SEO优化 */}
       <section className="page-header" style={{
-        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://images.unsplash.com/photo-1581092929311-c77333aa3c47?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        padding: '100px 0',
-        color: 'white',
+        backgroundColor: 'var(--primary-color)',
+        padding: '80px 0',
+        color: 'var(--white)',
         textAlign: 'center'
       }}>
         <div className="container">
-          <h1>产品展示</h1>
-          <p className="mt-2">高品质钣金加工产品，满足您的各种需求</p>
+          <h1 style={{color: 'var(--white)', marginBottom: '1rem'}}>专业钣金冲压产品</h1>
+          <p className="mt-2" style={{fontSize: '1.1rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto'}}>
+            玮莱达提供高精度钣金冲压加工服务，使用先进设备和优质材料，满足各行业客户的定制需求
+          </p>
         </div>
       </section>
 
-      {/* 产品展示 */}
-      <section className="section">
+      {/* 产品展示 - 符合参考网站风格 */}
+      <section className="section" style={{backgroundColor: 'var(--white)', padding: '2rem 0'}}>
         <div className="container">
+          {/* 产品分类和材质筛选 */}
+          <div className="filter-section mb-5" style={{backgroundColor: 'var(--light-color)', padding: '1.5rem', borderRadius: '5px'}}>
+            <div className="row">
+              <div className="col-md-6 mb-3 mb-md-0">
+                <label htmlFor="categoryFilter" style={{display: 'block', marginBottom: '0.5rem', fontWeight: '600', color: 'var(--dark-color)'}}>
+                  产品分类
+                </label>
+                <select 
+                  id="categoryFilter"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '0.5rem',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '4px',
+                    backgroundColor: 'var(--white)'
+                  }}
+                >
+                  {categories.map(category => (
+                    <option key={category} value={category}>{category}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="materialFilter" style={{display: 'block', marginBottom: '0.5rem', fontWeight: '600', color: 'var(--dark-color)'}}>
+                  材质选择
+                </label>
+                <select 
+                  id="materialFilter"
+                  value={selectedMaterial}
+                  onChange={(e) => setSelectedMaterial(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '0.5rem',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '4px',
+                    backgroundColor: 'var(--white)'
+                  }}
+                >
+                  {materials.map(material => (
+                    <option key={material} value={material}>{material}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
           <div className="row">
             {/* 产品过滤 */}
             <div className="col-lg-3 mb-4">
@@ -161,36 +232,61 @@ const Products = () => {
               </div>
             </div>
             
-            {/* 产品列表 */}
+            {/* 产品列表 - SEO优化的产品卡片 */}
             <div className="col-lg-9">
               <div className="row">
-                {products.map(product => (
+                {filteredProducts.map(product => (
                   <div key={product.id} className="col-lg-4 col-md-6 mb-4">
-                    <div className="product-item">
-                      <div className="product-img" style={{ height: '200px', overflow: 'hidden' }}>
+                    <div className="card h-100 border border-secondary" style={{borderRadius: '3px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)'}}>
+                      <div className="p-2" style={{backgroundColor: 'var(--light-color)'}}>
+                        <span className="text-sm" style={{color: 'var(--secondary-color)', fontWeight: '600'}}>
+                          材质: {product.material}
+                        </span>
+                      </div>
+                      <div className="product-img" style={{ height: '160px', overflow: 'hidden' }}>
                         <img 
                           src={product.image} 
-                          alt={product.name} 
+                          alt={`${product.name} - 高精度${product.category}`} 
+                          title={`${product.name} - 玮莱达高品质钣金产品`}
                           className="img-fluid w-100 h-100 object-cover"
                           onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
                           onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
-                          style={{ transition: 'transform 0.5s ease' }}
+                          style={{ transition: 'transform 0.5s ease', borderBottom: '1px solid var(--border-color)' }}
                         />
                       </div>
-                      <div className="product-info">
+                      <div className="card-body" style={{padding: '1rem'}}>
                         <div className="product-category" style={{ fontSize: '0.875rem', color: 'var(--primary-color)', marginBottom: '0.5rem' }}>
                           {product.category}
                         </div>
-                        <h3>{product.name}</h3>
-                        <p className="text-muted mb-3">{product.description.substring(0, 100)}...</p>
+                        <h4 className="card-title" style={{color: 'var(--dark-color)', fontSize: '1.1rem', marginBottom: '0.5rem'}}>
+                          {product.name}
+                        </h4>
+                        <p className="card-text" style={{fontSize: '0.9rem', color: '#666', marginBottom: '1rem', minHeight: '40px'}}>
+                          {product.description.substring(0, 100)}...
+                        </p>
                         <div className="product-features mb-3">
                           {product.features.slice(0, 2).map((feature, index) => (
                             <span key={index} className="badge badge-primary mr-2 mb-2">{feature}</span>
                           ))}
                         </div>
-                        <Link to="/contact" className="btn btn-outline-primary w-100">
-                          查看详情
-                        </Link>
+                        <div className="text-center">
+                          <Link to="/contact" 
+                            className="btn" 
+                            style={{
+                              backgroundColor: 'var(--primary-color)',
+                              color: 'var(--white)',
+                              padding: '0.4rem 1.2rem',
+                              borderRadius: '2px',
+                              textDecoration: 'none',
+                              border: 'none',
+                              fontSize: '0.9rem',
+                              width: '100%'
+                            }}
+                            aria-label={`查看${product.name}的详细信息`}
+                          >
+                            查看详情
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -218,6 +314,34 @@ const Products = () => {
                 </nav>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* 产品页底部SEO增强部分 */}
+      <section style={{backgroundColor: 'var(--light-color)', padding: '2rem 0', borderTop: '1px solid var(--border-color)'}}>
+        <div className="container">
+          <div className="text-center" style={{maxWidth: '900px', margin: '0 auto'}}>
+            <h3 style={{color: 'var(--primary-color)', marginBottom: '1rem'}}>精密钣金加工解决方案</h3>
+            <p style={{marginBottom: '1.5rem', lineHeight: '1.6'}}>
+              玮莱达专业提供高质量钣金冲压加工服务，支持定制化设计和大批量生产。
+              我们的产品广泛应用于电子设备外壳、机械设备配件、汽车零部件等领域，
+              严格的质量控制体系确保每一件产品都达到客户的高标准要求。
+            </p>
+            <Link to="/contact" 
+              className="btn" 
+              style={{
+                backgroundColor: 'var(--secondary-color)',
+                color: 'var(--white)',
+                padding: '0.6rem 2rem',
+                borderRadius: '2px',
+                textDecoration: 'none',
+                border: 'none',
+                fontWeight: '600'
+              }}
+            >
+              获取报价咨询
+            </Link>
           </div>
         </div>
       </section>

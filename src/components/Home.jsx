@@ -4,74 +4,83 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div className="page-transition">
-      {/* 英雄区域 */}
+      {/* 英雄区域 - 专业商务风格 */}
       <section className="hero-section" style={{
-        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80)',
+        backgroundImage: 'url(https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        padding: '150px 0',
-        color: 'white',
-        textAlign: 'center'
+        padding: '120px 0',
+        color: 'var(--white)'
       }}>
         <div className="container">
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', fontWeight: '700' }}>专业钣金加工解决方案</h1>
-          <p style={{ fontSize: '1.25rem', marginBottom: '2rem', maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto' }}>
-            二十年行业经验，先进设备，精湛工艺，为您提供高品质金属制品定制服务
-          </p>
-          <div className="d-flex flex-wrap justify-content-center gap-3">
-            <Link to="/services" className="btn btn-primary btn-lg">
-              了解服务 <i className="fas fa-arrow-right ml-2"></i>
-            </Link>
-            <Link to="/contact" className="btn btn-outline-primary btn-lg">
-              联系我们 <i className="fas fa-envelope ml-2"></i>
-            </Link>
+          <div className="bg-dark bg-opacity-80 p-5 rounded">
+            <h1 className="text-center" style={{ fontSize: '2.5rem', marginBottom: '1.5rem', fontWeight: '600', color: 'var(--white)' }}>
+              专业钣金加工解决方案
+            </h1>
+            <p className="text-center" style={{ fontSize: '1.2rem', marginBottom: '2rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+              玮莱达拥有二十年行业经验，配备先进的激光切割、数控折弯、冲压成型设备，专业团队提供高精度钣金加工定制服务
+            </p>
+            <div className="d-flex flex-wrap justify-content-center gap-4">
+              <Link to="/services" className="btn btn-primary btn-lg" style={{
+                backgroundColor: 'var(--accent-color)',
+                borderColor: 'var(--accent-color)',
+                padding: '0.8rem 1.8rem',
+                fontWeight: '600'
+              }}>
+                了解服务 <i className="fas fa-arrow-right ml-2"></i>
+              </Link>
+              <Link to="/contact" className="btn btn-outline-primary btn-lg" style={{
+                color: 'var(--white)',
+                borderColor: 'var(--white)',
+                padding: '0.8rem 1.8rem',
+                fontWeight: '600'
+              }}>
+                联系我们 <i className="fas fa-envelope ml-2"></i>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 关于简介 */}
-      <section className="section bg-light">
+      {/* 关于简介 - 专业SEO优化 */}
+      <section className="section" style={{backgroundColor: 'var(--light-color)', padding: '3rem 0'}}>
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-6 mb-4 mb-lg-0">
-              <div className="about-img" style={{ borderRadius: '8px', overflow: 'hidden', boxShadow: 'var(--shadow)' }}>
+            <div className="col-lg-6">
+              <h2 className="section-title mb-4" style={{color: 'var(--primary-color)', borderBottom: '2px solid var(--secondary-color)', paddingBottom: '0.5rem', display: 'inline-block'}}>
+                关于玮莱达
+              </h2>
+              <p className="mb-4" style={{lineHeight: '1.8', color: 'var(--dark-color)'}}>
+                玮莱达是一家专业的高精度钣金冲压加工企业，拥有先进的数控设备和完善的质量管理体系。
+                我们专注于各类钣金件的设计、生产和加工服务，为客户提供定制化的解决方案。
+              </p>
+              <p className="mb-6" style={{lineHeight: '1.8', color: 'var(--dark-color)'}}>
+                我们的团队由经验丰富的工程师和技术人员组成，能够满足电子设备、机械设备、汽车零部件等多个行业的需求。
+                严格的质量控制流程确保每件产品都达到国际标准，为客户创造最大价值。
+              </p>
+              <Link to="/about" 
+                className="btn" 
+                style={{
+                  backgroundColor: 'var(--primary-color)',
+                  color: 'var(--white)',
+                  padding: '0.6rem 1.5rem',
+                  borderRadius: '2px',
+                  textDecoration: 'none',
+                  border: 'none'
+                }}
+              >
+                了解更多
+              </Link>
+            </div>
+            <div className="col-lg-6">
+              <div style={{border: '1px solid var(--border-color)', padding: '8px', backgroundColor: 'var(--white)'}}>
                 <img 
-                  src="https://images.unsplash.com/photo-1569623441066-039d0a0952bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="工厂设备" 
+                  src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" 
+                  alt="玮莱达精密钣金加工工厂环境" 
+                  title="玮莱达专业钣金加工生产线" 
                   className="img-fluid w-100"
-                  style={{ transition: 'transform 0.5s ease' }}
-                  onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
-                  onMouseOut={(e) => e.target.style.transform = 'scale(1)'} 
                 />
               </div>
-            </div>
-            <div className="col-lg-6 pl-lg-5">
-              <h2>关于我们</h2>
-              <p className="mb-4">
-                我们是一家拥有二十年经验的专业钣金加工企业，致力于为客户提供高品质、高精度的金属制品定制服务。
-                凭借先进的生产设备和专业的技术团队，我们能够满足各种复杂的钣金加工需求。
-              </p>
-              <ul className="list-unstyled mb-4">
-                <li className="mb-2">
-                  <i className="fas fa-check-circle text-primary mr-2"></i>
-                  先进的激光切割、数控折弯、冲压设备
-                </li>
-                <li className="mb-2">
-                  <i className="fas fa-check-circle text-primary mr-2"></i>
-                  严格的质量管理体系，确保产品精度和一致性
-                </li>
-                <li className="mb-2">
-                  <i className="fas fa-check-circle text-primary mr-2"></i>
-                  专业的设计团队，提供定制化解决方案
-                </li>
-                <li className="mb-2">
-                  <i className="fas fa-check-circle text-primary mr-2"></i>
-                  完善的售后服务体系
-                </li>
-              </ul>
-              <Link to="/about" className="btn btn-primary">
-                了解更多 <i className="fas fa-arrow-right ml-2"></i>
-              </Link>
             </div>
           </div>
         </div>
